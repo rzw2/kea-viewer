@@ -131,19 +131,12 @@ def main():
             end_time = time.time()
             fps_m = fps_avg_frame_count / (end_time - start_time)
             start_time = time.time()
-
-            # Hack way to measure fps
-            #print("FPS {:f}".format(fps_m))
         fps_text = 'FPS = {:.1f}'.format(fps_m)
 
         for frame in frames:
             if frame.frameType() == tof.FrameType.INTENSITY:
-                # Show the FPS
-                img_intensity = np.flipud(np.asarray(frame))
 
-                # Not working for these images
-                # cv2.putText(img_intensity, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
-                #            font_size, text_color, font_thickness)
+                img_intensity = np.flipud(np.asarray(frame))
 
                 cv2.imshow('Intensity', img_intensity)
             elif frame.frameType() == tof.FrameType.RADIAL:
@@ -152,17 +145,9 @@ def main():
                 else:
                     img_color = quickRadialColor(frame)
 
-                # cv2.putText(img_color, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
-                #            font_size, text_color, font_thickness)
-
                 cv2.imshow('Depth', img_color)
             elif frame.frameType() == tof.FrameType.BGR:
-                # Copy stops the crash, but no copy crashes the camera ..
                 img_bgr = cv2.flip(np.asarray(frame).copy(), 0)
-
-                # Going to resize to VGA, as displaying the entire image takes too much time.
-                # img_bgr_vga = cv2.resize(
-                #    img_bgr, (640, 480), interpolation=cv2.INTER_NEAREST)
 
                 cv2.putText(img_bgr, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
                             font_size, text_color, font_thickness)
@@ -171,7 +156,6 @@ def main():
 
             elif frame.frameType() == tof.FrameType.BGR_PROJECTED:
                 img_bgr_proj = cv2.flip(np.asarray(frame), 0)
-                # resize to QVGA to test the export of this pipeline .
                 cv2.imshow('RGB Projected', img_bgr_proj)
 
             # Exscape key
