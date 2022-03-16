@@ -1,7 +1,7 @@
 # Chronoptics Kea OpenCV Viewer Example 
 ![Scheme](doc/chronoptics.png)
 
-[Chronoptics](www.chronoptics.com) designs and develops iToF depth cameras, our latest camera [Kea](https://www.chronoptics.com/cameras) is a highly configurable depth camera, that can also run custom code on camera. This is an example of connecting to the camera and displaying the Intensity, Depth, RGB and projected RGB from the camera. 
+[Chronoptics](https://www.chronoptics.com/) designs and develops iToF depth cameras, our latest camera [Kea](https://www.chronoptics.com/cameras) is a highly configurable depth camera, that can also run custom code on camera. This is an example of connecting to the camera and displaying the Intensity, Depth, RGB and projected RGB from the camera. 
 
 The output types are
 - Intensity, the amount of reflected IR light
